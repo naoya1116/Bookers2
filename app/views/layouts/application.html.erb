@@ -74,7 +74,7 @@
 
   <main>
     <% if flash[:notice] %>
-       <div class=“message”><%= flash[:notice] %></div>
+       <div class="alert text-success"><%= flash[:notice] %></div>
     <% end %>
     <%= yield %>
   </main>

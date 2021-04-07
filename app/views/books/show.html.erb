@@ -3,6 +3,7 @@
     <div class="col-md-3">
 
            <%= render 'books/info', book: @book, user: @user %>
+           <%= flash[:notice] %>
 
     </div>
 
@@ -12,19 +13,19 @@
          <tbody>
             <tr>
             <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40,format: 'jpeg', fallback: "no_image.jpg",size:"40x40"%>
-            <br><%= link_to user_path(@book.user.id), method: :get do %>
-              <% @book.user.name %>
+            <br><%= link_to user_path(@showbook.user.id), method: :get do %>
+              <% @showbook.user.name %>
               <% end %>
             </td>
             <td>
-              <%= link_to book_path(@book.id), method: :get do %>
-              <%= @book.title %>
+              <%= link_to book_path(@showbook.id), method: :get do %>
+              <%= @showbook.title %>
               <% end %>
             </td>
-            <td><%= @book.body %></td>
-              <% if @book.user_id == current_user.id %>
-              <td><%= link_to "Edit", edit_book_path(@book.id),class: "btn btn-success" %></td>
-              <td><%= link_to "Destroy", book_path(@book.id), class: "btn btn-danger",method: :delete, data: {confirm: "Are you sure？"} %></td>
+            <td><%= @showbook.body %></td>
+              <% if @showbook.user_id == current_user.id %>
+              <td><%= link_to "Edit", edit_book_path(@showbook.id),class: "btn btn-success" %></td>
+              <td><%= link_to "Destroy", book_path(@showbook.id), class: "btn btn-danger",method: :delete, data: {confirm: "Are you sure？"} %></td>
               <% end %>
             </tr>
          </tbody>
